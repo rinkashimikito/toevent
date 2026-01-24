@@ -1,0 +1,679 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		001 /* ToEventApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002 /* ToEventApp.swift */; };
+		003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 004 /* Assets.xcassets */; };
+		021 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022 /* Event.swift */; };
+		023 /* CalendarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024 /* CalendarInfo.swift */; };
+		025 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026 /* CalendarService.swift */; };
+		031 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032 /* AppState.swift */; };
+		033 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034 /* DateFormatters.swift */; };
+		035 /* SettingsTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036 /* SettingsTypes.swift */; };
+		041 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042 /* MenuBarView.swift */; };
+		043 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044 /* IntroView.swift */; };
+		051 /* CalendarSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052 /* CalendarSettingsView.swift */; };
+		053 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054 /* GeneralSettingsView.swift */; };
+		061 /* Settings in Frameworks */ = {isa = PBXBuildFile; productRef = 062 /* Settings */; };
+		071 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 072 /* MenuBarExtraAccess */; };
+		037 /* UrgencyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038 /* UrgencyLevel.swift */; };
+		080 /* SystemStateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081 /* SystemStateService.swift */; };
+		082 /* AdaptiveSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083 /* AdaptiveSchedule.swift */; };
+		045 /* EventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046 /* EventRowView.swift */; };
+		047 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048 /* EventListView.swift */; };
+		091 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 092 /* KeyboardShortcuts */; };
+		093 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 094 /* LaunchAtLogin */; };
+		095 /* KeyboardShortcuts+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096 /* KeyboardShortcuts+Names.swift */; };
+		055 /* DisplaySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056 /* DisplaySettingsView.swift */; };
+		057 /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058 /* AdvancedSettingsView.swift */; };
+		100 /* CalendarProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101 /* CalendarProviderProtocol.swift */; };
+		102 /* LocalCalendarProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103 /* LocalCalendarProvider.swift */; };
+		104 /* OAuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105 /* OAuthCredentials.swift */; };
+		106 /* CalendarProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107 /* CalendarProviderType.swift */; };
+		108 /* CalendarAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109 /* CalendarAccount.swift */; };
+		110 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111 /* KeychainService.swift */; };
+		112 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113 /* AuthService.swift */; };
+		120 /* CalendarProviderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121 /* CalendarProviderManager.swift */; };
+		122 /* EventCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123 /* EventCacheService.swift */; };
+		124 /* GoogleCalendarProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125 /* GoogleCalendarProvider.swift */; };
+		126 /* OutlookCalendarProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127 /* OutlookCalendarProvider.swift */; };
+		128 /* GoogleAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129 /* GoogleAPIModels.swift */; };
+		130 /* MicrosoftAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131 /* MicrosoftAPIModels.swift */; };
+		132 /* AddAccountSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133 /* AddAccountSheet.swift */; };
+		140 /* MeetingURLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141 /* MeetingURLParser.swift */; };
+		142 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143 /* NotificationService.swift */; };
+		150 /* Event+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151 /* Event+Actions.swift */; };
+		160 /* TravelTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161 /* TravelTimeService.swift */; };
+		162 /* Array+Conflicts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163 /* Array+Conflicts.swift */; };
+		164 /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165 /* EventDetailView.swift */; };
+		170 /* ToEventFocusFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171 /* ToEventFocusFilter.swift */; };
+		180 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181 /* NotificationSettingsView.swift */; };
+		182 /* QuickAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183 /* QuickAddView.swift */; };
+		190 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 191 /* Sparkle */; };
+		192 /* UpdaterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193 /* UpdaterController.swift */; };
+		194 /* WhatsNewCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195 /* WhatsNewCheck.swift */; };
+		196 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197 /* WhatsNewView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		002 /* ToEventApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEventApp.swift; sourceTree = "<group>"; };
+		004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		005 /* ToEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		006 /* ToEvent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToEvent.entitlements; sourceTree = "<group>"; };
+		022 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		024 /* CalendarInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfo.swift; sourceTree = "<group>"; };
+		026 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		032 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		034 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		036 /* SettingsTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTypes.swift; sourceTree = "<group>"; };
+		042 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		044 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		052 /* CalendarSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingsView.swift; sourceTree = "<group>"; };
+		054 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		038 /* UrgencyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrgencyLevel.swift; sourceTree = "<group>"; };
+		081 /* SystemStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemStateService.swift; sourceTree = "<group>"; };
+		083 /* AdaptiveSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveSchedule.swift; sourceTree = "<group>"; };
+		046 /* EventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowView.swift; sourceTree = "<group>"; };
+		048 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
+		096 /* KeyboardShortcuts+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardShortcuts+Names.swift"; sourceTree = "<group>"; };
+		056 /* DisplaySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySettingsView.swift; sourceTree = "<group>"; };
+		058 /* AdvancedSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsView.swift; sourceTree = "<group>"; };
+		101 /* CalendarProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProviderProtocol.swift; sourceTree = "<group>"; };
+		103 /* LocalCalendarProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCalendarProvider.swift; sourceTree = "<group>"; };
+		105 /* OAuthCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthCredentials.swift; sourceTree = "<group>"; };
+		107 /* CalendarProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProviderType.swift; sourceTree = "<group>"; };
+		109 /* CalendarAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAccount.swift; sourceTree = "<group>"; };
+		111 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		113 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		121 /* CalendarProviderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProviderManager.swift; sourceTree = "<group>"; };
+		123 /* EventCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCacheService.swift; sourceTree = "<group>"; };
+		125 /* GoogleCalendarProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCalendarProvider.swift; sourceTree = "<group>"; };
+		127 /* OutlookCalendarProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlookCalendarProvider.swift; sourceTree = "<group>"; };
+		129 /* GoogleAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIModels.swift; sourceTree = "<group>"; };
+		131 /* MicrosoftAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrosoftAPIModels.swift; sourceTree = "<group>"; };
+		133 /* AddAccountSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountSheet.swift; sourceTree = "<group>"; };
+		141 /* MeetingURLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingURLParser.swift; sourceTree = "<group>"; };
+		143 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		151 /* Event+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+Actions.swift"; sourceTree = "<group>"; };
+		161 /* TravelTimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTimeService.swift; sourceTree = "<group>"; };
+		163 /* Array+Conflicts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Conflicts.swift"; sourceTree = "<group>"; };
+		165 /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		171 /* ToEventFocusFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToEventFocusFilter.swift; sourceTree = "<group>"; };
+		181 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
+		183 /* QuickAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddView.swift; sourceTree = "<group>"; };
+		193 /* UpdaterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdaterController.swift; sourceTree = "<group>"; };
+		195 /* WhatsNewCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewCheck.swift; sourceTree = "<group>"; };
+		197 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		007 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				061 /* Settings in Frameworks */,
+				071 /* MenuBarExtraAccess in Frameworks */,
+				091 /* KeyboardShortcuts in Frameworks */,
+				093 /* LaunchAtLogin in Frameworks */,
+				190 /* Sparkle in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		008 = {
+			isa = PBXGroup;
+			children = (
+				009 /* ToEvent */,
+				010 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		009 /* ToEvent */ = {
+			isa = PBXGroup;
+			children = (
+				002 /* ToEventApp.swift */,
+				097 /* Extensions */,
+				172 /* Intent */,
+				027 /* Models */,
+				028 /* Services */,
+				029 /* State */,
+				030 /* Utilities */,
+				040 /* Views */,
+				004 /* Assets.xcassets */,
+				006 /* ToEvent.entitlements */,
+			);
+			path = ToEvent;
+			sourceTree = "<group>";
+		};
+		010 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				005 /* ToEvent.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		027 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				109 /* CalendarAccount.swift */,
+				022 /* Event.swift */,
+				024 /* CalendarInfo.swift */,
+				107 /* CalendarProviderType.swift */,
+				129 /* GoogleAPIModels.swift */,
+				131 /* MicrosoftAPIModels.swift */,
+				105 /* OAuthCredentials.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		028 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				113 /* AuthService.swift */,
+				121 /* CalendarProviderManager.swift */,
+				101 /* CalendarProviderProtocol.swift */,
+				026 /* CalendarService.swift */,
+				123 /* EventCacheService.swift */,
+				125 /* GoogleCalendarProvider.swift */,
+				111 /* KeychainService.swift */,
+				103 /* LocalCalendarProvider.swift */,
+				141 /* MeetingURLParser.swift */,
+				143 /* NotificationService.swift */,
+				127 /* OutlookCalendarProvider.swift */,
+				081 /* SystemStateService.swift */,
+				161 /* TravelTimeService.swift */,
+				193 /* UpdaterController.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		029 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				032 /* AppState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		030 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				083 /* AdaptiveSchedule.swift */,
+				034 /* DateFormatters.swift */,
+				036 /* SettingsTypes.swift */,
+				038 /* UrgencyLevel.swift */,
+				195 /* WhatsNewCheck.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		040 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				165 /* EventDetailView.swift */,
+				046 /* EventRowView.swift */,
+				048 /* EventListView.swift */,
+				042 /* MenuBarView.swift */,
+				044 /* IntroView.swift */,
+				183 /* QuickAddView.swift */,
+				197 /* WhatsNewView.swift */,
+				050 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		050 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				133 /* AddAccountSheet.swift */,
+				058 /* AdvancedSettingsView.swift */,
+				052 /* CalendarSettingsView.swift */,
+				056 /* DisplaySettingsView.swift */,
+				054 /* GeneralSettingsView.swift */,
+				181 /* NotificationSettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		097 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				163 /* Array+Conflicts.swift */,
+				151 /* Event+Actions.swift */,
+				096 /* KeyboardShortcuts+Names.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		172 /* Intent */ = {
+			isa = PBXGroup;
+			children = (
+				171 /* ToEventFocusFilter.swift */,
+			);
+			path = Intent;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		011 /* ToEvent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 012 /* Build configuration list for PBXNativeTarget "ToEvent" */;
+			buildPhases = (
+				013 /* Sources */,
+				007 /* Frameworks */,
+				014 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ToEvent;
+			packageProductDependencies = (
+				062 /* Settings */,
+				072 /* MenuBarExtraAccess */,
+				092 /* KeyboardShortcuts */,
+				094 /* LaunchAtLogin */,
+				191 /* Sparkle */,
+			);
+			productName = ToEvent;
+			productReference = 005 /* ToEvent.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		015 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					011 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 016 /* Build configuration list for PBXProject "ToEvent" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 008;
+			packageReferences = (
+				060 /* XCRemoteSwiftPackageReference "Settings" */,
+				070 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
+				090 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				098 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+				200 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
+			productRefGroup = 010 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				011 /* ToEvent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		014 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				003 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		013 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				001 /* ToEventApp.swift in Sources */,
+				021 /* Event.swift in Sources */,
+				023 /* CalendarInfo.swift in Sources */,
+				025 /* CalendarService.swift in Sources */,
+				031 /* AppState.swift in Sources */,
+				033 /* DateFormatters.swift in Sources */,
+				035 /* SettingsTypes.swift in Sources */,
+				037 /* UrgencyLevel.swift in Sources */,
+				080 /* SystemStateService.swift in Sources */,
+				082 /* AdaptiveSchedule.swift in Sources */,
+				045 /* EventRowView.swift in Sources */,
+				047 /* EventListView.swift in Sources */,
+				041 /* MenuBarView.swift in Sources */,
+				043 /* IntroView.swift in Sources */,
+				051 /* CalendarSettingsView.swift in Sources */,
+				053 /* GeneralSettingsView.swift in Sources */,
+				095 /* KeyboardShortcuts+Names.swift in Sources */,
+				055 /* DisplaySettingsView.swift in Sources */,
+				057 /* AdvancedSettingsView.swift in Sources */,
+				100 /* CalendarProviderProtocol.swift in Sources */,
+				102 /* LocalCalendarProvider.swift in Sources */,
+				104 /* OAuthCredentials.swift in Sources */,
+				106 /* CalendarProviderType.swift in Sources */,
+				108 /* CalendarAccount.swift in Sources */,
+				110 /* KeychainService.swift in Sources */,
+				112 /* AuthService.swift in Sources */,
+				120 /* CalendarProviderManager.swift in Sources */,
+				122 /* EventCacheService.swift in Sources */,
+				124 /* GoogleCalendarProvider.swift in Sources */,
+				126 /* OutlookCalendarProvider.swift in Sources */,
+				128 /* GoogleAPIModels.swift in Sources */,
+				130 /* MicrosoftAPIModels.swift in Sources */,
+				132 /* AddAccountSheet.swift in Sources */,
+				140 /* MeetingURLParser.swift in Sources */,
+				142 /* NotificationService.swift in Sources */,
+				150 /* Event+Actions.swift in Sources */,
+				160 /* TravelTimeService.swift in Sources */,
+				162 /* Array+Conflicts.swift in Sources */,
+				164 /* EventDetailView.swift in Sources */,
+				170 /* ToEventFocusFilter.swift in Sources */,
+				180 /* NotificationSettingsView.swift in Sources */,
+				182 /* QuickAddView.swift in Sources */,
+				192 /* UpdaterController.swift in Sources */,
+				194 /* WhatsNewCheck.swift in Sources */,
+				196 /* WhatsNewView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		017 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		018 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		019 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ToEvent/ToEvent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToEvent/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "ToEvent needs calendar access to show your upcoming events in the menu bar.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "ToEvent needs calendar access to show your upcoming events in the menu bar.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.immedio.ToEvent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		020 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ToEvent/ToEvent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToEvent/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "ToEvent needs calendar access to show your upcoming events in the menu bar.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "ToEvent needs calendar access to show your upcoming events in the menu bar.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.immedio.ToEvent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		012 /* Build configuration list for PBXNativeTarget "ToEvent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				019 /* Debug */,
+				020 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		016 /* Build configuration list for PBXProject "ToEvent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				017 /* Debug */,
+				018 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		060 /* XCRemoteSwiftPackageReference "Settings" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Settings";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+		070 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/orchetect/MenuBarExtraAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		090 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		098 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		200 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		062 /* Settings */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 060 /* XCRemoteSwiftPackageReference "Settings" */;
+			productName = Settings;
+		};
+		072 /* MenuBarExtraAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 070 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */;
+			productName = MenuBarExtraAccess;
+		};
+		092 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 090 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+		094 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 098 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+		191 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 200 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 015 /* Project object */;
+}

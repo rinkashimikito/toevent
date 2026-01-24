@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>ToEvent needs calendar access to show your upcoming events in the menu bar.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>ToEvent needs calendar access to show your upcoming events in the menu bar.</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>ToEvent needs to open events in Calendar app when you click them.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>OAuth Callback</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>toevent</string>
+			</array>
+		</dict>
+	</array>
+	<key>SUFeedURL</key>
+	<string>https://github.com/rinkashimikito/toevent/releases/latest/download/appcast.xml</string>
+	<key>SUEnableInstallerLauncherService</key>
+	<true/>
+	<key>SUPublicEDKey</key>
+	<string>1FXrN0mh1oXHVCZj7cv+sO6bdn/AX4RWpojzuKOfCjs=</string>
+</dict>
+</plist>

@@ -1,0 +1,188 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: macos-15
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install create-dmg
+        run: brew install create-dmg
+
+      - name: Check if signing secrets exist
+        id: check-secrets
+        run: |
+          if [ -n "${{ secrets.BUILD_CERTIFICATE_BASE64 }}" ]; then
+            echo "has_signing=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_signing=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Install certificate
+        if: steps.check-secrets.outputs.has_signing == 'true'
+        env:
+          BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+          P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
+          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+
+          echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $CERTIFICATE_PATH
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+          security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+          security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security list-keychain -d user -s $KEYCHAIN_PATH
+
+      - name: Resolve packages
+        run: |
+          xcodebuild -resolvePackageDependencies \
+            -project ToEvent/ToEvent.xcodeproj \
+            -scheme ToEvent
+
+      - name: Build (unsigned)
+        if: steps.check-secrets.outputs.has_signing == 'false'
+        run: |
+          xcodebuild build \
+            -project ToEvent/ToEvent.xcodeproj \
+            -scheme ToEvent \
+            -configuration Release \
+            -derivedDataPath build/DerivedData \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+
+          mkdir -p build/export
+          cp -R "build/DerivedData/Build/Products/Release/ToEvent.app" build/export/
+
+      - name: Archive and Export (signed)
+        if: steps.check-secrets.outputs.has_signing == 'true'
+        run: |
+          xcodebuild archive \
+            -project ToEvent/ToEvent.xcodeproj \
+            -scheme ToEvent \
+            -configuration Release \
+            -archivePath build/ToEvent.xcarchive \
+            -destination "generic/platform=macOS"
+
+          xcodebuild -exportArchive \
+            -archivePath build/ToEvent.xcarchive \
+            -exportPath build/export \
+            -exportOptionsPlist scripts/export-options.plist
+
+      - name: Create DMG
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          create-dmg \
+            --volname "ToEvent" \
+            --window-pos 200 120 \
+            --window-size 600 400 \
+            --icon-size 100 \
+            --icon "ToEvent.app" 150 185 \
+            --app-drop-link 450 185 \
+            "build/ToEvent-${VERSION}.dmg" \
+            "build/export/ToEvent.app" || true
+
+          # create-dmg returns non-zero even on success sometimes
+          if [ ! -f "build/ToEvent-${VERSION}.dmg" ]; then
+            echo "DMG creation failed, creating simple DMG"
+            hdiutil create -volname "ToEvent" -srcfolder "build/export/ToEvent.app" -ov -format UDZO "build/ToEvent-${VERSION}.dmg"
+          fi
+
+      - name: Notarize
+        if: steps.check-secrets.outputs.has_signing == 'true'
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          NOTARIZATION_PASSWORD: ${{ secrets.NOTARIZATION_PASSWORD }}
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+
+          xcrun notarytool submit "build/ToEvent-${VERSION}.dmg" \
+            --apple-id "$APPLE_ID" \
+            --team-id "$TEAM_ID" \
+            --password "$NOTARIZATION_PASSWORD" \
+            --wait
+
+          xcrun stapler staple "build/ToEvent-${VERSION}.dmg"
+
+      - name: Create ZIP for Sparkle
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          cd build/export
+          zip -r ../ToEvent-${VERSION}.zip ToEvent.app
+
+      - name: Generate appcast
+        env:
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          DATE=$(date -u +"%a, %d %b %Y %H:%M:%S +0000")
+          SIZE=$(stat -f%z "build/ToEvent-${VERSION}.zip")
+          ED_SIGNATURE=""
+
+          # Try to sign with Sparkle if key exists
+          if [ -n "$SPARKLE_PRIVATE_KEY" ]; then
+            # Build to get Sparkle tools
+            SPARKLE_BIN=$(find build -name "sign_update" -path "*Sparkle*" 2>/dev/null | head -1)
+            if [ -z "$SPARKLE_BIN" ]; then
+              SPARKLE_BIN=$(find ~/Library/Developer/Xcode/DerivedData -name "sign_update" -path "*/Sparkle/*" 2>/dev/null | head -1)
+            fi
+
+            if [ -n "$SPARKLE_BIN" ]; then
+              ED_SIGNATURE=$(echo -n "$SPARKLE_PRIVATE_KEY" | "$SPARKLE_BIN" --ed-key-file - "build/ToEvent-${VERSION}.zip" 2>/dev/null || echo "")
+            fi
+          fi
+
+          cat > appcast.xml << EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+            <channel>
+              <title>ToEvent Updates</title>
+              <language>en</language>
+              <item>
+                <title>Version ${VERSION}</title>
+                <sparkle:version>${VERSION}</sparkle:version>
+                <sparkle:shortVersionString>${VERSION}</sparkle:shortVersionString>
+                <sparkle:releaseNotesLink>https://github.com/rinkashimikito/toevent/releases/tag/v${VERSION}</sparkle:releaseNotesLink>
+                <pubDate>${DATE}</pubDate>
+                <enclosure
+                  url="https://github.com/rinkashimikito/toevent/releases/download/v${VERSION}/ToEvent-${VERSION}.zip"
+                  sparkle:edSignature="${ED_SIGNATURE}"
+                  length="${SIZE}"
+                  type="application/octet-stream" />
+              </item>
+            </channel>
+          </rss>
+          EOF
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            build/ToEvent-*.dmg
+            build/ToEvent-*.zip
+            appcast.xml
+          generate_release_notes: true
+          body: |
+            ## Installation
+
+            Download `ToEvent-${{ github.ref_name }}.dmg`, open it, and drag ToEvent to Applications.
+
+            **Note:** This build is unsigned. After installing, run:
+            ```bash
+            xattr -cr /Applications/ToEvent.app
+            ```
+            Then open ToEvent from Applications.
