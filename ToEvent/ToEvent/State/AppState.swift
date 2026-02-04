@@ -38,6 +38,9 @@ final class AppState: ObservableObject {
         didSet { updateMenuBarTitle() }
     }
 
+    /// Event dismissed from menu bar display (session-only, not persisted)
+    @Published private(set) var dismissedEventID: String?
+
     var filteredEvents: [Event] {
         if UserDefaults.standard.bool(forKey: "focusHideAllEvents") {
             return []
@@ -472,16 +475,56 @@ final class AppState: ObservableObject {
 
             await MainActor.run {
                 self.events = sortedEvents
-                if self.hideAllDayEvents {
-                    self.nextEvent = sortedEvents.first { !$0.isAllDay }
-                } else {
-                    self.nextEvent = sortedEvents.first
-                }
+                self.updateNextEvent(from: sortedEvents)
                 if self.notificationsEnabled {
                     self.scheduleNotificationsForEvents()
                 }
             }
         }
+    }
+
+    private func updateNextEvent(from sortedEvents: [Event]) {
+        // Clear dismissal if the dismissed event has ended
+        if let dismissedID = dismissedEventID,
+           let dismissedEvent = sortedEvents.first(where: { $0.id == dismissedID }),
+           dismissedEvent.endDate <= Date() {
+            dismissedEventID = nil
+        }
+
+        // Find next event, skipping dismissed one for menu bar display
+        let candidates = sortedEvents.filter { event in
+            if hideAllDayEvents && event.isAllDay { return false }
+            if event.id == dismissedEventID { return false }
+            return true
+        }
+        nextEvent = candidates.first
+    }
+
+    /// Dismiss an active "now" event from the menu bar display.
+    /// The event remains visible in the list until it ends.
+    /// Only works if there's another event to show.
+    func dismissFromMenuBar(_ event: Event) {
+        let now = Date()
+
+        // Only dismiss events that are currently happening
+        guard event.startDate <= now && now < event.endDate else { return }
+
+        // Check if there's another event to show after this one
+        let candidates = events.filter { e in
+            if hideAllDayEvents && e.isAllDay { return false }
+            if e.id == event.id { return false }
+            return true
+        }
+        guard !candidates.isEmpty else { return }
+
+        dismissedEventID = event.id
+        updateNextEvent(from: events)
+    }
+
+    /// Check if an event is currently active (happening now)
+    func isEventActive(_ event: Event) -> Bool {
+        let now = Date()
+        return event.startDate <= now && now < event.endDate
     }
 
     private func scheduleNotificationsForEvents() {

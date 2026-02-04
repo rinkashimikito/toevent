@@ -9,7 +9,7 @@ struct MenuBarView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            EventListView(onEventTap: openEventInCalendar)
+            EventListView(onEventTap: handleEventTap)
 
             Divider()
 
@@ -78,6 +78,25 @@ struct MenuBarView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             isRefreshing = false
         }
+    }
+
+    private func handleEventTap(_ event: Event) {
+        // If event is active and can be dismissed, dismiss it from menu bar
+        if appState.isEventActive(event) && canDismissEvent(event) {
+            appState.dismissFromMenuBar(event)
+        } else {
+            openEventInCalendar(event)
+        }
+    }
+
+    private func canDismissEvent(_ event: Event) -> Bool {
+        // Check if there's another event to show after dismissing this one
+        let candidates = appState.events.filter { e in
+            if appState.hideAllDayEvents && e.isAllDay { return false }
+            if e.id == event.id { return false }
+            return true
+        }
+        return !candidates.isEmpty
     }
 
     private func openEventInCalendar(_ event: Event) {
