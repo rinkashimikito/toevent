@@ -151,7 +151,9 @@ final class AppState: ObservableObject {
             menuBarTitle = "\(displayTitle) today"
         } else {
             let timeString = formatTimeForMenuBar(until: event.startDate, from: currentTime)
-            if useNaturalLanguage && timeDisplayFormat != .absolute {
+            if timeString.lowercased() == "now" {
+                menuBarTitle = "\(displayTitle) is Now"
+            } else if useNaturalLanguage && timeDisplayFormat != .absolute {
                 menuBarTitle = "\(displayTitle) \(timeString)"
             } else {
                 menuBarTitle = "\(displayTitle) in \(timeString)"
@@ -491,9 +493,10 @@ final class AppState: ObservableObject {
             dismissedEventID = nil
         }
 
-        // Find next event, skipping dismissed one for menu bar display
+        // Find next event for menu bar display
+        // All-day events never appear in menu bar (only in list when enabled)
         let candidates = sortedEvents.filter { event in
-            if hideAllDayEvents && event.isAllDay { return false }
+            if event.isAllDay { return false }
             if event.id == dismissedEventID { return false }
             return true
         }
@@ -502,16 +505,17 @@ final class AppState: ObservableObject {
 
     /// Dismiss an active "now" event from the menu bar display.
     /// The event remains visible in the list until it ends.
-    /// Only works if there's another event to show.
+    /// Only works if there's another non-all-day event to show.
     func dismissFromMenuBar(_ event: Event) {
         let now = Date()
 
         // Only dismiss events that are currently happening
         guard event.startDate <= now && now < event.endDate else { return }
 
-        // Check if there's another event to show after this one
+        // Check if there's another non-all-day event to show
+        // All-day events never appear in menu bar
         let candidates = events.filter { e in
-            if hideAllDayEvents && e.isAllDay { return false }
+            if e.isAllDay { return false }
             if e.id == event.id { return false }
             return true
         }
@@ -525,6 +529,18 @@ final class AppState: ObservableObject {
     func isEventActive(_ event: Event) -> Bool {
         let now = Date()
         return event.startDate <= now && now < event.endDate
+    }
+
+    /// Check if the current active event can be dismissed (there's another non-all-day event to show)
+    func canDismissActiveEvent() -> Bool {
+        guard let currentEvent = nextEvent else { return false }
+        // Only non-all-day events count since menu bar never shows all-day events
+        let candidates = events.filter { e in
+            if e.isAllDay { return false }
+            if e.id == currentEvent.id { return false }
+            return true
+        }
+        return !candidates.isEmpty
     }
 
     private func scheduleNotificationsForEvents() {
