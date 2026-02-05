@@ -151,7 +151,9 @@ final class AppState: ObservableObject {
             menuBarTitle = "\(displayTitle) today"
         } else {
             let timeString = formatTimeForMenuBar(until: event.startDate, from: currentTime)
-            if useNaturalLanguage && timeDisplayFormat != .absolute {
+            if timeString.lowercased() == "now" {
+                menuBarTitle = "\(displayTitle) is Now"
+            } else if useNaturalLanguage && timeDisplayFormat != .absolute {
                 menuBarTitle = "\(displayTitle) \(timeString)"
             } else {
                 menuBarTitle = "\(displayTitle) in \(timeString)"
@@ -525,6 +527,17 @@ final class AppState: ObservableObject {
     func isEventActive(_ event: Event) -> Bool {
         let now = Date()
         return event.startDate <= now && now < event.endDate
+    }
+
+    /// Check if the current active event can be dismissed (there's another event to show)
+    func canDismissActiveEvent() -> Bool {
+        guard let currentEvent = nextEvent else { return false }
+        let candidates = events.filter { e in
+            if hideAllDayEvents && e.isAllDay { return false }
+            if e.id == currentEvent.id { return false }
+            return true
+        }
+        return !candidates.isEmpty
     }
 
     private func scheduleNotificationsForEvents() {

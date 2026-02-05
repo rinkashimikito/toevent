@@ -105,6 +105,13 @@ struct ToEventApp: App {
             statusItem = item
             applyUrgencyAppearance(to: item)
         }
+        .onChange(of: shortcutHandler.isMenuPresented) { isPresented in
+            if isPresented, let event = appState.nextEvent, appState.isEventActive(event) {
+                if appState.canDismissActiveEvent() {
+                    appState.dismissFromMenuBar(event)
+                }
+            }
+        }
 
         SwiftUI.Settings {
             TabView {
@@ -118,6 +125,8 @@ struct ToEventApp: App {
                     .tabItem { Label("Calendars", systemImage: "calendar") }
                 AdvancedSettingsView()
                     .tabItem { Label("Advanced", systemImage: "slider.horizontal.3") }
+                AboutSettingsView()
+                    .tabItem { Label("About", systemImage: "info.circle") }
             }
             .environmentObject(appState)
             .environmentObject(updaterController)

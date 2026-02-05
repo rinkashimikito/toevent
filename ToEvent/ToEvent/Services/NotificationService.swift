@@ -105,13 +105,24 @@ final class NotificationService: NSObject, ObservableObject, UNUserNotificationC
     }
 
     func requestPermission() async throws -> Bool {
+        // Check current status first
+        let settings = await center.notificationSettings()
+
+        // If already denied, open System Settings (dialog won't show again)
+        if settings.authorizationStatus == .denied {
+            await MainActor.run {
+                if let url = URL(string: "x-apple.systempreferences:com.apple.preference.notifications") {
+                    NSWorkspace.shared.open(url)
+                }
+            }
+            return false
+        }
+
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         let granted = try await center.requestAuthorization(options: options)
 
-        await MainActor.run {
-            isAuthorized = granted
-            authorizationStatus = granted ? .authorized : .denied
-        }
+        // Refresh status from system
+        await checkAuthorizationStatus()
 
         return granted
     }

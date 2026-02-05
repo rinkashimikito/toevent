@@ -19,6 +19,7 @@
 		043 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044 /* IntroView.swift */; };
 		051 /* CalendarSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052 /* CalendarSettingsView.swift */; };
 		053 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054 /* GeneralSettingsView.swift */; };
+		198 /* AboutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059 /* AboutSettingsView.swift */; };
 		061 /* Settings in Frameworks */ = {isa = PBXBuildFile; productRef = 062 /* Settings */; };
 		071 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 072 /* MenuBarExtraAccess */; };
 		037 /* UrgencyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038 /* UrgencyLevel.swift */; };
@@ -75,6 +76,7 @@
 		044 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		052 /* CalendarSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSettingsView.swift; sourceTree = "<group>"; };
 		054 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		059 /* AboutSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsView.swift; sourceTree = "<group>"; };
 		038 /* UrgencyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrgencyLevel.swift; sourceTree = "<group>"; };
 		081 /* SystemStateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemStateService.swift; sourceTree = "<group>"; };
 		083 /* AdaptiveSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveSchedule.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				052 /* CalendarSettingsView.swift */,
 				056 /* DisplaySettingsView.swift */,
 				054 /* GeneralSettingsView.swift */,
+				059 /* AboutSettingsView.swift */,
 				181 /* NotificationSettingsView.swift */,
 			);
 			path = Settings;
@@ -360,6 +363,7 @@
 				043 /* IntroView.swift in Sources */,
 				051 /* CalendarSettingsView.swift in Sources */,
 				053 /* GeneralSettingsView.swift in Sources */,
+				198 /* AboutSettingsView.swift in Sources */,
 				095 /* KeyboardShortcuts+Names.swift in Sources */,
 				055 /* DisplaySettingsView.swift in Sources */,
 				057 /* AdvancedSettingsView.swift in Sources */,
